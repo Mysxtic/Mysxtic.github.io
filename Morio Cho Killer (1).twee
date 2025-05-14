@@ -1,0 +1,170 @@
+:: StoryTitle
+Morio Cho Killer
+
+
+:: StoryData
+{
+  "ifid": "73BA7458-9661-4B6B-B1A2-0CFAFB2E4FDD",
+  "format": "Harlowe",
+  "format-version": "3.3.9",
+  "start": "Start",
+  "zoom": 1
+}
+
+
+:: Ask Rohan to investigate suspicious neighbors {"position":"900,600","size":"100,100"}
+Rohan uses Heaven's Door on nearby residents. One entry reads: "I love hands. I keep them preserved. No one will know."
+
+<img src="https://th.bing.com/th/id/OIP.6f9kLgXgAVas2bSLNZWv2AHaEK?w=301&h=180&c=7&r=0&o=5&pid=1.7" width="500">
+
+(set: $kiraIdentified to true)
+
+"It's him," Rohan mutters. "Kira lives in Morioh… under a false identity."
+
+* [[Confront the suspect's address|Main Investigation]]
+
+
+:: Check Kira’s previous home (if identified) {"position":"800,1000","size":"100,100"}
+You sneak into a quiet suburb house. It's empty—but filled with women's accessories and a shrine to hands.
+
+Kira is close.
+
+* [[Final Battle]]
+
+
+:: Final Battle {"position":"600,1000","size":"100,100"}
+You confront Kira in the alley. His Stand, Killer Queen, pulses with power.
+
+<img src="https://th.bing.com/th/id/OIP.s-Z4Z6G9Kx6frS5A2-a-7AHaGD?w=200&h=180&c=7&r=0&o=5&pid=1.7" width="500">
+
+(if: $standPower is "Crazy Diamond")[
+	(if: $kiraIdentified)[
+		(set: $kiraDefeated to true)
+		You anticipate his tricks and heal through the bombs. A final blow shatters Killer Queen.
+
+		Kira screams as he's hit by an ambulance… fate delivers justice.
+		
+		* [[Victory]]
+	](else:)[
+		(set: $playerHP to $playerHP - 50)
+		He uses Bites the Dust! You are thrown back in time and wounded.
+		(if: $playerHP <= 0)[[Game Over]]](else:)[[[Try again with better knowledge|Main Investigation]]]
+	]
+](else:)[
+	(set: $playerHP to $playerHP - 50)
+	Killer Queen explodes everything nearby. You're gravely wounded.
+	(if: $playerHP <= 0)[[Game Over]](else:)[[[Try again|Main Investigation]]]
+]
+
+
+
+:: Game Over {"position":"700,1200","size":"100,100"}
+Your Stand shatters. The world goes silent.
+
+<img src="https://th.bing.com/th/id/OIP.Q_KmUTaYO2O7JpzjJN4xOwHaFt?w=213&h=180&c=7&r=0&o=5&pid=1.7" width="500">
+
+Kira escapes again… another victim lost to time.
+
+* [[Retry|Start]]
+
+
+:: Investigate Angelo Rock further {"position":"700,800","size":"100,100"}
+You find a hidden compartment—photos of women and severed hands. Echoes marks them with sound.
+
+<img src="https://th.bing.com/th/id/OIP.A7RYsb-LrRTk9_EtM4YsYAHaGr?w=191&h=180&c=7&r=0&o=5&pid=1.7" width="500">
+
+(set: $kiraIdentified to true)
+
+Koichi stares grimly. "We know who he is now."
+
+* [[Prepare to confront Kira|Main Investigation]]
+
+
+:: Main Investigation {"position":"900,800","size":"100,100"}
+Where to next?
+* [[Visit the Morioh Hand Museum (trap?)]]
+* [[Check Kira’s previous home (if identified)]]
+(if: not $kiraIdentified)[[Search public records for clues]]
+
+
+:: Search public records for clues {"position":"1000,1000","size":"100,100"}
+After hours of digging, you find evidence: a name change request, photos that don’t match ID records—Kira is using someone else's face!
+
+(set: $kiraIdentified to true)
+
+* [[Prepare for the confrontation|Main Investigation]]
+
+
+:: Search the town square with Jotaro {"position":"1100,600","size":"100,100"}
+Jotaro calmly watches the crowd. Suddenly, a purse-snatching Stand distracts you. In the chaos, Jotaro gets wounded.
+
+<img src="https://th.bing.com/th/id/OIP.BOpptm2b393L3OthfqcKiAAAAA?w=156&h=180&c=7&r=0&o=5&pid=1.7" width="500">
+
+(set: $jotaroAlive to false)
+(set: $playerHP to $playerHP - 30)
+
+"Find Kira... even if I don't make it," he says.
+
+* [[Regroup with Koichi and Rohan|Main Investigation]]
+
+
+:: Start {"position":"900,400","size":"100,100"}
+(set: $koichiAlive to true)
+(set: $rohanAlive to true)
+(set: $jotaroAlive to true)
+(set: $kiraIdentified to false)
+(set: $playerHP to 100)
+(set: $standPower to "Crazy Diamond")
+(set: $kiraDefeated to false)
+
+<img src="https://th.bing.com/th/id/OIP.N_9Tz0-8sDOR5kzpl-1X4wHaCe?cb=iwp1&rs=1&pid=ImgDetMain "width="500">
+
+You are Josuke Higashikata, living peacefully in Morioh—until strange deaths begin occurring.
+
+Whispers of a serial killer rise. You and your friends begin the search for a man with a hand fetish... Yoshikage Kira.
+
+Where do you begin investigating?
+* [[Talk to Koichi about recent Stand activity]]
+* [[Ask Rohan to investigate suspicious neighbors]]
+* [[Search the town square with Jotaro]]
+
+
+:: Talk to Koichi about recent Stand activity {"position":"700,600","size":"100,100"}
+You meet Koichi near the school. He's rattled—Echoes found something odd near Angelo Rock: a severed hand.
+
+Suddenly, a Stand user attacks! It's one of Kira's minions trying to silence you.
+
+(set: $playerHP to $playerHP - 20)
+
+<img src="https://th.bing.com/th/id/OIP.g8wGaf5yZcBGCgL0ci-uuAHaEK?w=298&h=180&c=7&r=0&o=5&pid=1.7" width="500">
+
+You and Koichi fight him off, barely.
+
+* [[Investigate Angelo Rock further]]
+* [[Return to town and warn the others|Main Investigation]]
+
+
+:: Victory {"position":"500,1200","size":"100,100"}
+You defeated Yoshikage Kira. Morioh is safe—for now.
+
+Your allies mourn their losses, but peace returns to the streets.
+
+<img src="https://th.bing.com/th/id/OIP.Qa9OVA_FbrPxrhfkZlgpwgHaEK?w=319&h=180&c=7&r=0&o=5&pid=1.7" width="500">
+
+* [[Play Again|Start]]
+
+
+:: Visit the Morioh Hand Museum (trap?) {"position":"525,800","size":"100,100"}
+Inside, mannequins and wax hands line the walls. Kira’s voice echoes.
+
+"I wanted peace… but you forced my hand."
+
+He uses Killer Queen!
+
+<img src="https://th.bing.com/th/id/OIP.HK2ztCEY928LG2cu9OTqXQHaEK?w=308&h=180&c=7&r=0&o=5&pid=1.7" width="500">
+
+(set: $playerHP to $playerHP - 40)
+
+You narrowly escape with your life.
+
+* [[Final Battle]]
